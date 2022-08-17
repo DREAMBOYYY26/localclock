@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Num Iteration</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+*{font-family: 'Dancing Script', cursive;
+  font-size: 50px;}
+body {
+  text-align: center;
+  background: hsla(0, 0%, 15%, 1);}
+#numHT {
+  height: 90vh;
+  display: grid;
+  align-items: center;
+  color: #F6F6F6;
+  background: hsla(0, 0%, 15%, 1);}
+  button {
+  background: hsla(0, 0%, 15%, 1);
+  color: #F6F6F6;
+  border: none;}
+</style>
+</head><body>
+ <button onclick="start(); srt()">CLICK ME</button>
+  <div id="numHT">
+    <h3 id="hour">0</h3>
+    <h3 id="min">0</h3>
+    <h3 id="sec">0</h3>
+    <h3 id="mili">0</h3>
+  </div>
+  <script>
+    let miliHT = document.getElementById('mili')
+let hour = document.getElementById('hour')
+let min = document.getElementById('min')
+let sec = document.getElementById('sec')
+var d = new Date();
+function start() {
+  setInterval(() => {
+    d = new Date();
+    miliHT.innerHTML = d.getMilliseconds();
+    min.innerHTML = d.getMinutes();
+    hour.innerHTML = d.getHours();
+    var h = [1, 2, 3, 4, 5, 6,
+             7, 8, 9, 10, 11, 12];
+    var h12;
+    if (d.getHours() >= 13) {
+    if (d.getHours() === 13) { h12 = h[0] }
+    else if (d.getHours() === 14) { h12 = h[1] }
+    else if (d.getHours() === 15) { h12 = h[2] }
+    else if (d.getHours() === 16) { h12 = h[3] }
+    else if (d.getHours() === 17) { h12 = h[4] }
+    else if (d.getHours() === 18) { h12 = h[5] }
+    else if (d.getHours() === 19) { h12 = h[6] }
+    else if (d.getHours() === 20) { h12 = h[7] }
+    else if (d.getHours() === 21) { h12 = h[8] }
+    else if (d.getHours() === 23) { h12 = h[9] }
+    else { h12 = h[10] } hour.innerHTML = h12; }
+    sec.innerHTML = d.getSeconds();
+    
+    start()
+    
+  }, 1);
+}
+
+function srt() {
+     var elem = document.getElementById('html');
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen() }
+ else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen() } 
+    else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen() }
+    navigator.vibrate(100)
+}
+  </script>
+  
+</body>
+</html>
